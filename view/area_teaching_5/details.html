@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=yes"/>
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <title></title>
+</head>
+<style>
+    #details{
+        padding: 0.96rem 0.33rem;
+    }
+    #details .banner{
+        width: 100%;
+        height: 4rem;
+        font-size: 0;
+        overflow: hidden;
+        margin-bottom: 0.4rem;
+        box-shadow:2px 7px 20px #dbdbdb;
+        border-radius: 5px;
+    }
+    #details .banner img{
+        width: 100%;
+        height: 100%;
+    }
+    #details p{
+        line-height: 0.45rem;
+        color: #757575;
+        letter-spacing:1px;
+    }
+    #details .address{
+        padding-top: 0.25rem;
+    }
+    #details .timeBtn{
+        display: inline-block;
+        width: 5.6rem;
+        height:0.8rem ;
+        line-height: 0.8rem;
+        background: #f0f0f0;
+        color: #757575;
+        text-align: center;
+        border-radius: 0.05rem;
+        margin-bottom: 0.25rem;
+        font-size: 14px;
+    }
+    #details .timeBtn.active{
+        color: #ffffff;
+        background: #8fcaf9;
+    }
+</style>
+<body>
+<div id="details">
+	<div v-html="rich_text"></div>
+    <!--轮播图-->
+    <!--<div class="banner">
+        <img src="../../img/bnner2.png" alt="">
+    </div>-->
+    <!--标题-->
+    <!--<h3 class="title" v-text="title" style="font-size: 24px"></h3>
+    <div>
+        <p>本课将讲述Photoshop美工设计的的基本知识，包括软件基本界面的的操作，软件主要工具的介绍，学员上机操作，教师指导教学等。</p>
+        <p>在接下来的课程中，学员将掌握美工就业的基本技能包括基础的海报设计、平面设计、网店设计等技能。</p>
+    </div>
+    <div class="address">
+        <p>地点：杭州市电子信息职业学院丁桥校区实训楼四楼机房</p>
+        <p>授课教师：宋老师（数字媒体专业部负责人）</p>
+    </div>-->
+    <div>
+        <p>可预约时间：</p>
+        <span v-for="(item,index) in timeJson" v-text="item" :class="{timeBtn:true, active:indexS==index}" @tap="change(index)"></span>
+    </div>
+    <div>
+    	 <input type="tel" name="tels" v-model="tels" placeholder="请留下您的联系方式（移动电话）" @blur="scrollForBug()"/>
+    </div>
+    <div style="text-align: center;padding-top: 0.5rem">
+        <span class="setBeforeBtn" v-if="state==2" @click="submit">预约</span>
+        <a class="Phoneline" href="tel://18958078339">联系咨询</a>
+    </div>
+    <!--功能模块类表-->
+</div>
+</body>
+<script type="text/javascript" src="../../lib/vue.js"></script>
+<script type="text/javascript" src="../../lib/mui.js"></script>
+<script type="text/javascript" src="../../js/api/req.js"></script>
+<script type="text/javascript" src="../../js/api/order_api.js"></script>
+<script type="text/javascript" src="../../js/user/user.js"></script>
+<script type="text/javascript" src="../../js/area_teaching/details.js"></script>
+</html>

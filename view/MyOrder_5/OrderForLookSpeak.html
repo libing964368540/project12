@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <link rel="stylesheet" href="../../font/material-icons.css">
+	<title>订单评价</title>
+    <style>
+    	#app{
+    		padding: 0.96rem 0.33rem;
+    	}
+    	#app ul{
+    		position: relative;
+    	}
+    	#app ul li{
+    		margin-bottom: 0.2rem;
+    	}
+    	 .evaluate::before{
+            content: '待评价：';
+            vertical-align: text-top;
+            color: #000;
+        }
+        .evaluate2::before{
+        	 content: '已评价：';
+            vertical-align: text-top;
+            color: #000;
+        }
+        .evaluate i,.evaluate2 i{
+            vertical-align: bottom;
+            color: #ff9800;
+            font-size: 22px!important;
+            width:0.6rem;
+        }
+        textarea{
+        	height: 1.44rem;
+        	font-size: 14px!important;
+        }
+        em{
+           position: absolute;
+           color: #2196F3;
+           font-size: 14px;
+           top:0.3rem;
+           right: 0;
+           font-style: normal;	
+        }
+		.leaveMassage::before{
+			content: '学校留言：';
+		}
+    </style>
+    <title>订单评价</title>
+    <body>
+    	<div id="app">
+    		<h3 v-text="type"></h3>
+    	   <ul style="padding-top: 0.3rem;">
+    		   <li><span v-text="Message"></span></li> 
+    		   <li><span v-text="'交流时间：'+time"></span></li>
+    		   <li><span v-text="'交流人数：'+Num"></span></li>
+    		   <li><span v-text="'交流内容：'+title"></span></li>
+    		   <li><span v-text="'联系方式：'+tels"></span></li>
+			   <li><span v-text="leaveMassage" class="leaveMassage"></span></li>
+    		   <li v-if="!haveSubmit" style="padding-top: 1rem"><textarea name="des" rows="" cols="" v-model="des" ></textarea></li>
+    		    <li v-if="haveSubmit"><span v-text="'评价内容：'+des"></span></li>
+    		   	<li  v-if="!haveSubmit">
+    		   		<span class="evaluate">
+    		        	<i class="material-icons" v-for="(item,index) in pingbi" v-text="item.text" @tap="changePingbi(index)" ></i>
+    		   		</span>
+    		   	</li>
+    		   	 <li v-if="haveSubmit">
+    		   		<span class="evaluate2" >
+    		        	<i class="material-icons" v-for="item in pingbi" v-text="item.text" ></i>
+    		   		</span>
+    		   	</li>
+    	       <!--<em v-text="state"></em>-->
+    	   </ul>
+    	   <div style="text-align: center;padding-top: 0.5rem">
+               <span class="setBeforeBtn" @click="submit" v-if="!haveSubmit">提交</span>
+           </div>
+    	</div>
+    	
+    	
+	</body>
+<script type="text/javascript" src="../../lib/vue.js"></script>
+<script type="text/javascript" src="../../lib/mui.js"></script>
+<script type="text/javascript" src="../../js/api/req.js"></script>
+<script type="text/javascript" src="../../js/api/order_api.js"></script>
+<script type="text/javascript" src="../../js/user/user.js"></script>
+<script type="text/javascript" src="../../js/MyOrder/OrderForLookSpeak.js"></script>
+</html>

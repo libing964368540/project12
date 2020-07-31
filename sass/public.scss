@@ -1,0 +1,84 @@
+body, ul, ol, li, p, div, h1, h2, h3, h4, h5, h6, img, a ,input,s,dl,dd{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body{
+  background: #ffffff!important;
+}
+.clear:after{
+  content:"";
+  height:0;
+  line-height:0;
+  display:block;
+  clear:both;
+  visibility:hidden;
+}
+.lf{
+  float: left;
+}
+.rg{
+  float: right;
+}
+
+@mixin user($size) {
+  $list: 1024px, 770px, 768px, 766px, 600px, 514px, 500px, 480px, 450px, 420px, 416px, 414px, 412px, 384px, 375px, 360px, 320px;
+  @each $i in $list {
+    @media screen and (max-width: #{$i}) {
+      html {
+        font-size: 100px * ( $i / $size);
+      }
+    }
+  }
+}
+@include user(750px);
+input::-webkit-input-placeholder{/*Webkit browsers*/
+  color:#979797;
+  font-size: 0.3rem;
+}
+input::-moz-placeholder{/*Mozilla Firefox 4 to 8*/
+  color:#979797;
+  font-size: 0.3rem;
+}
+input:-ms-input-placeholder{/*Internet Explorer 10+*/
+  color:#979797;
+  font-size: 0.3rem;
+}
+h3.title{
+  color: #3f3f3f;
+  margin-bottom: 0.55rem;
+  line-height: 0.65rem;
+  font-size: 30px;
+}
+body input[type='text'],body input[type='tel']{
+  border: none;
+  border-bottom:0.02rem solid #f8f8f8 ;
+  margin-bottom: 0;
+  padding-left:0 ;
+  padding-right:0 ;
+}
+.inputWrap{
+  padding-top: 0.45rem;
+  padding-bottom: 0.55rem;
+}
+.setBeforeBtn{
+  display: inline-block;
+  background: #2196F3;
+  height:0.8rem;
+  width: 100%;
+  line-height: 0.8rem;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 5px;
+}
+.Phoneline{
+  color: #2196F3;
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 0.25rem;
+  display: inline-block;
+}

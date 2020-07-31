@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <link rel="stylesheet" href="../../font/material-icons.css">
+    <title>我的预约</title>
+    <style>
+        #app{
+            padding: 0.96rem 0.33rem;
+        }
+        .headSrc{
+           position: absolute;
+            left: 0;
+            top: -0.2rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            overflow: hidden;
+            font-size: 0;
+            vertical-align: top
+        }
+        .headSrc img{
+            width: 100%;
+        }
+         .evaluate,.evaluate2{
+         	min-width: 3.2rem;
+         }
+        .evaluate::before{
+            content: '待评价：';
+            vertical-align: middle;
+            color: #757575;
+            font-size: 15px;
+        }
+         .evaluate2::before{
+        	 content: '已评价：';
+            vertical-align: middle;
+            color: #757575;
+            font-size: 15px;
+        }
+        .evaluate i,.evaluate2 i{
+            vertical-align: middle;
+            color: #ff9800;
+            font-size: 18px!important;
+            width:0.4rem;
+        }
+
+        #app .listS{
+           padding: 0.3rem 0;
+        }
+        #app .listS li{
+            padding: 0.3rem 0 0.2rem;
+            border-bottom: 0.01rem solid #e1e1e1;
+            position: relative;
+        }
+        #app .listS li .state{
+            position: absolute;
+            right: 0;
+            top:0.3rem;
+            color: #2196F3;
+            font-size: 14px;
+            font-style: normal;
+
+        }
+        #app .listS .title{
+            display: block;
+            margin-bottom: 0.2rem;
+            font-size: 14px;
+            color: #101010;
+        }
+        #app .listS .type{
+            font-size: 17px;
+            color: #101010;
+            overflow:hidden; 
+            text-overflow:ellipsis;
+            display:-webkit-box; 
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:2;
+        }
+        .studentHead{
+            width: 1.5rem;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+        .studentHead img{
+            width: 100%;
+            
+        }
+        .teachSpeak{
+            font-size: 14px;
+            min-width: 1.46rem;
+            padding: 0 0.2rem;
+            height: 0.71rem;
+            line-height: 0.71rem;
+            background: #f0f0f0;
+            color: #929292;
+            display: inline-block;
+            text-align: center;
+            border-radius: 0.05rem;
+            margin-right: 0.57rem;
+        }
+     
+    </style>
+</head>
+<body>
+      <div id="app">
+          <!--头部-->
+          <div style="position: relative;padding-left: 1.2rem;box-sizing: border-box;margin-bottom: 0.2rem">
+              <div class="headSrc"><img :src="headurl" alt=""></div>
+              <h3 style="font-size: 30px">我的预约</h3>
+          </div>
+          <!--列表-->
+          <div class="listS">
+              <ul>
+                  <!--硬件资源-->
+                  <li v-for="(item,index) in list" @tap="details(item,index)" v-if="item.type!=6">
+                      <span class="title" v-text="changeType(item)"></span>
+                      <p class="type" v-text="getOrderDetail(item.cotent).title"></p>
+                      <div class="clear"><span class="lf" style="color: #757575;;line-height: 0.5rem" v-text="getYmd(item.time)"></span>
+                       <span class="evaluate2 rg" v-html="pingbiScore(item)" v-if="item.des||item._value">-->
+                      		<!--<i class="material-icons" v-for="items in pingbiScore" v-text="items.text" ></i>-->
+                       </span>	
+                        <span class="evaluate rg" v-else>
+                      		<i class="material-icons" v-for="item in pingbi" v-text="item.text" ></i>
+                        </span>	
+                      </div>
+                      <i class="state" v-text="changeState(item.state)" ></i>
+                  </li>
+                    <li v-for="(item,index) in list" @tap="details(item,index)" v-if="item.type==6">
+                      <span class="title" v-text="changeType(item)"></span>
+                      <p class="type" v-text="showType6(item.cotent)"></p>
+                      <div class="clear"><span class="lf" style="color: #757575;;line-height: 0.5rem" v-text="getYmd(item.time)"></span>
+                       <span class="evaluate2 rg" v-html="pingbiScore(item)" v-if="item.des||item._value">
+                      		
+                        </span>	
+                        <span class="evaluate rg" v-else>
+                      		<i class="material-icons" v-for="item in pingbi" v-text="item.text" ></i>
+                        </span>	
+                      </div>
+                      <!--<i class="state" v-text="changeState(item.state)"></i>-->
+                  </li>
+                  <!--技术服务-->
+                  <!--<li>
+                      <span class="title">技术服务</span>
+                      <p class="type">苹果ios客户端开发</p>
+                      <div class="clear"><span class="lf" style="color: #e8e8e8;line-height: 0.5rem">2019.5.20</span><span class="evaluate rg"><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star_half</i></span></div>
+                      <i class="state">开发中</i>
+                  </li>-->
+                  <!--人才输送-->
+                  <li  v-for="(item,index) in contentList" @tap="detailsStudent(index)">
+                      <dl class="clear">
+                          <dt class="studentHead lf"><img :src="imgpath2+item.Json.accountData.photopath" alt=""></dt>
+                          <dd class="rg" style="width: 5rem;height: 1.5rem;">
+                              <div style="margin-bottom: 0.2rem"><span v-text="item.Json.accountData.rname"></span><span style="font-size: 14px;color: #8b8b8b;margin-left: 0.2rem" v-text="fillMajorGroup(item.Json.accountData.identitysData[6].majors)">数字媒体</span></div>
+                               <p class="type" style="font-size: 14px"  v-text="item.des"></p>
+                          </dd>
+                          <dd style="display: inline-block;padding-top: 0.2rem;"><span class="teachSpeak" v-for="items in changeLong(item.tags)" v-text="items"></span></dd>
+                     </dl>
+                      <i class="state" v-text="getFcount(item)"></i>
+                  </li>
+                  <!--社区培训-->
+                  <!--<li>-->
+                  <!--</li>-->
+                  <!--参观交流-->
+                  <!--<li>-->
+                  <!--</li>-->
+              </ul>
+          </div>
+
+      </div>
+</body>
+<script type="text/javascript" src="../../lib/mui.js"></script>
+<script type="text/javascript" src="../../lib/vue.js"></script>
+<script type="text/javascript" src="../../js/api/req.js"></script>
+<script type="text/javascript" src="../../js/api/order_api.js"></script>
+<script type="text/javascript" src="../../js/user/user.js"></script>
+<script type="text/javascript" src="../../js/MyOrder/MyOrder.js"></script>

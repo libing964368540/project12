@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <title>技术服务</title>
+    <style>
+        #strongResources{
+            padding: 0.96rem 0.33rem;
+        }
+        #strongResources .typeTitleWrap{
+            margin-bottom: 0.1rem;
+        }
+        #strongResources .typeTitleWrap ul{
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+        }
+        #strongResources .typeTitle{
+            padding-top: 0.2rem;
+            color: #909090;
+            padding-bottom: 0.37rem;
+            border-bottom: 0.04rem solid #ffffff;
+            font-size: 14px;
+        }
+        #strongResources .typeTitle.active{
+            color: #2196f3;
+            border-bottom: 0.04rem solid #2196f3;
+        }
+        #strongResources .list dl{
+            padding: 0.62rem 0;
+            border-bottom: 0.02rem solid #f8f8f8;
+        }
+        #strongResources .list dl dt{
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            overflow: hidden;
+            font-size: 0;
+            box-shadow:2px 6px 20px #B2B2B2;
+            border-radius: 5px;
+
+        }
+        #strongResources .list dl dt img{
+            width: 100%;
+        }
+        #strongResources .list dl dd{
+            display: inline-block;
+            width: 3.9rem;
+            position: relative;
+            height: 2.4rem;
+        }
+        #strongResources .list dl dd h4{
+            color: #101010;
+            font-weight: normal;
+            margin-bottom: 0.3rem;
+             overflow: hidden;
+             text-overflow:ellipsis;
+             white-space: nowrap;
+        }
+        #strongResources .list dl dd em{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-style: normal;
+            color: #2196F3;
+            font-size:17px ;
+        }
+        #strongResources .list dl dd p{
+            color: #bdbdbd;
+             overflow: hidden;
+             text-overflow:ellipsis;
+             white-space: nowrap;
+        }
+        .inputWrap.active input{
+            border-bottom: 0.02rem solid #ff4747;;
+        }
+    </style>
+</head>
+<body>
+<div id="strongResources">
+    <h3 class="title" v-text="title"></h3>
+    <div class="typeTitleWrap">
+        <ul>
+            <li :class="{typeTitle:true,active:iscur==index}" v-text="item" v-for="(item,index) in typeList" @tap="switchType(index)"></li>
+        </ul>
+    </div>
+    <div class="list">
+        <dl v-for="(item,index) in list" class="clear" @tap.stop="JumpDetail(index)">
+            <dt class="lf"><img v-lazy="imgpath+item.img" alt=""></dt>
+            <dd class="rg">
+                <h4 v-text="item.title"></h4>
+                <p v-text="item.des"></p>
+                <em @tap.stop="setBefore(index)">预约</em><span v-text="'（已有'+item.order_count+'人预约）'" style="position: absolute;left:30px;bottom:0; color: #bdbdbd;font-size: 14px;"></span>
+            </dd>
+        </dl>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../lib/vue.js"></script>
+<script type="text/javascript" src="../../lib/mui.js"></script>
+<script src="https://g1.jyblc.cn/pic/jyb_1111/vue-lazyload-1.js"></script>
+<script type="text/javascript" src="../../js/api/req.js"></script>
+<script type="text/javascript" src="../../js/api/skill_api.js"></script>
+<script type="text/javascript" src="../../js/user/user.js"></script>
+<script type="text/javascript" src="../../js/Skill_service/index.js"></script>
+</html>

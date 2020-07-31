@@ -1,0 +1,36 @@
+
+@font-face {font-family: "iconfont";
+  src:url('../font/iconfont.ttf?t=1532681957948') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xuesheng:before { content: "\e62c"; }
+
+.icon-bianji:before { content: "\e651"; }
+
+.icon-xiaoxixinfengnews2:before { content: "\e828"; }
+
+.icon-shaixuan:before { content: "\e63f"; }
+
+.icon-wode:before { content: "\e635"; }
+
+.icon-bulb:before { content: "\e65e"; }
+
+.icon-zan:before { content: "\e6e6"; }
+
+.icon-qingjia:before { content: "\e652"; }
+
+.icon-banjiguanli:before { content: "\e69c"; }
+
+.icon-shangsheng:before { content: "\e653"; }
+
+.icon-xuesheng1:before { content: "\e662"; }
+
+.icon-xiajiang:before { content: "\e608"; }

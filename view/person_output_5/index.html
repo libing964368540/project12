@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" href="../../css/public.css">
+		<link rel="stylesheet" href="../../lib/mui.css" />
+		<link rel="stylesheet" href="../../font/material-icons.css" />
+		<link rel="stylesheet" href="../../lib/mui.picker.css" />
+		<link rel="stylesheet" href="../../lib/mui.poppicker.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/mescroll.js@1.4.1/mescroll.min.js" charset="utf-8"></script>
+		<title>人才输送</title>
+		<style>
+			#strongResources {
+				padding: 0.96rem 0.33rem;
+				position: relative;
+			}
+			
+			#strongResources .del {
+				position: absolute;
+				right: 0.33rem;
+				top: 0.33rem;
+				font-size: 16px;
+				font-style: normal;
+				color: #2196F3;
+			}
+			
+			#strongResources .list {
+				border-bottom: 0.02rem solid #f8f8f8;
+				position: relative;
+			}
+			
+			#strongResources .list .follow {
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				top: 0.62rem;
+				color: #FF4747;
+				font-size: 14px;
+				border: 1px solid #FF4747;
+				padding: 0 0.18rem;
+				border-radius: 4px;
+			}
+			
+			#strongResources .list dl {
+				padding: 0.62rem 0;
+				padding-bottom: 0.43rem;
+			}
+			
+			#strongResources .list dl dt {
+				display: inline-block;
+				width: 1.6rem;
+				height: 1.6rem;
+				overflow: hidden;
+				font-size: 0;
+				box-shadow: 2px 7px 20px #dbdbdb;
+				border-radius: 5px;
+			}
+			
+			#strongResources .list dl dt img {
+				width: 100%;
+			}
+			
+			#strongResources .list dl dd {
+				display: inline-block;
+				width: 4.6rem;
+				position: relative;
+				height: 1.6rem;
+			}
+			
+			#strongResources .list dl dd h4 {
+				color: #101010;
+				font-weight: normal;
+				margin-bottom: 0.3rem;
+				display: inline-block;
+			}
+			
+			#strongResources .list dl dd .Major {
+				display: inline-block;
+				padding-left: 0.4rem;
+				color: #bdbdbd;
+				font-size: 14px;
+			}
+			
+			#strongResources .list dl dd p {
+				color: #757575;
+				margin-bottom: 0;
+			}
+			
+			#strongResources .list ul {
+				padding-bottom: 0.32rem;
+			}
+			
+			#strongResources .list ul li {
+				font-size: 14px;
+				min-width: 1.46rem;
+				padding: 0 0.2rem;
+				height: 0.71rem;
+				line-height: 0.71rem;
+				background: #f0f0f0;
+				color: #929292;
+				display: inline-block;
+				text-align: center;
+				border-radius: 0.05rem;
+				margin-right: 0.57rem;
+			}
+			
+			.mescroll {
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 100px;
+				bottom: 0;
+				height: auto;
+				padding: 0 0.33rem;
+				/*如设置bottom:50px,则需height:auto才能生效*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="strongResources">
+			<h3 class="title" v-text="title"></h3>
+			<i class="del" @tap="showMajorGroupPick">筛选</i>
+			<div id="mescroll" class="mescroll">
+				<ul id="mediaList" class="media-list">
+					<li>
+						<div class="list" v-for="(item,index) in contentList" @tap.stop="details(index)">
+							<dl class="clear">
+								<dt class="lf"><img :src="imgpath2+item.Json.accountData.photopath" alt=""></dt>
+								<dd class="rg">
+									<h4 v-text="item.Json.accountData.rname"></h4>
+									<span class="Major" v-text="fillMajorGroup(item.Json.accountData.identitysData[6].majors)"></span>
+									<p v-text="item.des"></p>
+								</dd>
+							</dl>
+							<ul>
+        	                         <li v-for="items in changeLong(item.tags)" v-text="items"></li>
+                              </ul>
+							<span class="follow" @tap.stop="followStudent(item)" v-text="getFcount(item)" :style="{color:item.isAttention==0?'#2196f3':'#ff4747',borderColor:item.isAttention==0?'#2196f3':'#ff4747'}"></span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../lib/vue.js"></script>
+	<script type="text/javascript" src="../../lib/mui.js"></script>
+	<script type="text/javascript" src="../../lib/mui.picker.js"></script>
+	<script type="text/javascript" src="../../lib/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../../js/api/req.js"></script>
+	<script type="text/javascript" src="../../js/api/person_api.js"></script>
+	<script type="text/javascript" src="../../js/user/user.js"></script>
+	<script type="text/javascript" src="../../js/person_output/index.js"></script>
+	<script type="text/javascript">
+
+	</script>
+
+</html>

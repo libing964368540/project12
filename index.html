@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="lib/mui.css" />
+    <title>资源服务丁兰小镇</title>
+	<style>
+		.icon {
+			position: absolute;
+			left: 0;
+			top:0;
+			bottom: 0;
+			margin: auto;
+			width: 1rem;
+			height: 1rem;
+			vertical-align: -0.15em;
+			fill: currentColor;
+			overflow: hidden;
+		}
+		.headSrc,.imgWrap{
+            position: absolute;
+			right: 0.33rem;
+			top: 10px;
+			width: 0.8rem;
+			height: 0.8rem;
+			border-radius: 50%;
+		}
+		.imgWrap{overflow: hidden;
+			left:0;top:0;font-size: 0;}
+		.headSrc::before{
+			content: '我的预约';
+			display: inline-block;
+			position: absolute;
+			right: 0.8rem;
+			width: 1.5rem;
+			line-height: 0.8rem;
+			color:#2196f3;
+		}
+		.headSrc img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" style="position: relative">
+		<!--标题-->
+		<h3 class="title" v-text="title" style="padding-top: 0.5rem"></h3>
+		<!--头像-->
+		<div class="headSrc" @click="showMyOrder"><div class="imgWrap"><img :src="headurl" alt=""></div></div>
+		<!--轮播图-->
+			<div class="mui-slider">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item" v-for="item in bannerList"><a :href="item.view"><img :src="item.img" alt=""></a></div>
+				</div>
+			</div>
+		<!--功能模块类表-->
+
+		<ul v-for="(item,index) in moduleList" >
+			<li @tap="showPage(index)">
+				<svg class="icon" aria-hidden="true">
+				<use :xlink:href="item.iconf"></use>
+			   </svg><p v-text="item.name"></p></li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript" src="lib/vue.js"></script>
+<script type="text/javascript" src="lib/mui.js"></script>
+<script src="lib/iconfont.js"></script>
+<script type="text/javascript" src="js/api/req.js"></script>
+<script type="text/javascript" src="js/user/user.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</html>

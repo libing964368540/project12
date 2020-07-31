@@ -1,0 +1,44 @@
+#app {
+  padding: 0.96rem 0.33rem; }
+  #app h3.title {
+    color: #000000;
+    margin-bottom: 0.55rem; }
+  #app .banner {
+    width: 100%;
+    height: auto;
+    font-size: 0;
+    margin-bottom: 0.2rem;
+    line-height: 0; }
+    #app .banner img {
+      width: 100%; }
+  #app ul li {
+    height: 1.64rem;
+    border-bottom: 0.02rem solid #f8f8f8;
+    line-height: 1.64rem;
+    padding-left: 1.25rem;
+    box-sizing: border-box;
+    position: relative; }
+    #app ul li span {
+      display: inline-block;
+      width: 0.88rem;
+      height: 0.88rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      left: 0; }
+    #app ul li p {
+      margin-bottom: 0;
+      font-size: 0.36rem;
+      color: #101010; }
+
+#app .mui-slider {
+  overflow: hidden;
+  -moz-box-shadow: 2px 6px 20px #B2B2B2;
+  -webkit-box-shadow: 2px 6px 20px #B2B2B2;
+  box-shadow: 2px 6px 20px #B2B2B2;
+  border-radius: 5px;
+  margin-bottom: 0.2rem; }
+
+/*# sourceMappingURL=index.css.map */

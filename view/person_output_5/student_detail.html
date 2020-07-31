@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>学生详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <link rel="stylesheet" href="../../css/public.css">
+        <link rel="stylesheet" href="../../lib/mui.css" />
+        <link rel="stylesheet" href="../../font/material-icons.css" />
+        <link rel="stylesheet" href="../../lib/iconfont.css" />
+	</head>
+	<style>
+		 #app{
+		 	padding: 0.96rem 0.33rem;
+		 }
+		 .flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.flex-1 {
+	-webkit-box-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+}
+
+.flex-right {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	    -ms-flex-direction: row-reverse;
+	        flex-direction: row-reverse;
+}
+
+.flex-cloumn {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+
+.flex-x-center {
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.flex-y-center {
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+
+.flex-y-end {
+	-webkit-box-align: end;
+	    -ms-flex-align: end;
+	        align-items: flex-end;
+}
+
+.just-center {
+	-webkit-box-pack: justify;
+     -ms-flex-pack: justify;
+	justify-content: space-between;
+}
+     #app .head{
+     	width: 1.2rem;
+     }
+      #app .head img{
+     	width: 1.2rem;
+     }
+	</style>
+
+	<body>
+		<div id="app">
+			<div style="padding-bottom: 100px;">
+				<div class="flex  flex-y-top just-center" style="border-bottom:1px solid #F3F5F8;padding-bottom: 0.55rem;">
+					<ul class="">
+					   <li class="">
+							<div class="">
+								<h3 v-text="info.accountData.rname" class="blod" style="color: #101010;font-size: 30px;"></h3>
+								<p v-text="info.accountData.identitysData[6].classgrades[0].name"></p>
+								<p v-text="'手机号：'+info.accountData.phone"></p>
+							</div>
+					  </li>
+				  </ul>
+				 <div class="head">
+					<img src="" v-lazy="getPhoto(info)" alt="" />
+				 </div>
+				</div>
+
+				<ul style="padding: 0.52rem 0;padding-bottom: 0.4rem;">
+						<li class="flex  flex-y-top just-center">
+							<div class="flex  flex-y-top just-center">
+								<span style="margin-right: 0.1rem;color: #101010;font-weight:bold ;font-size: 17px;">我的综合评分</span>
+							</div>
+						    <div class="flex  flex-y-top just-center">
+						    	<span class="main-color font-size-big-plus-x" v-text="coreProject.statistics.value+600||0 +600" style="font-weight: bold;color: #2196F3;"></span>
+						    </div>
+					</li>
+				</ul>
+				<div style="padding-top: 0.2rem;">
+					<div class="flex just-center">
+						   <div id="canvas_top_wrap">
+						   	    <div id="canvas_top" style="width: 100px;height: 100px;margin:0 0 10px 0;"></div>
+                                <p class="top" style="text-align: center;">全校</p>
+                                <p class="top" style="text-align: center;" v-text="rankList.top_rank"></p>
+                            </div>
+                            <div id="canvas_top_majorGroup_wrap">
+                            	<div id="canvas_top_majorGroup" style="width: 100px;height: 100px;margin:0 0 10px 0;"></div>
+                                <p class="top_majorGroup" style="text-align: center;">专业部</p>
+                                <p class="top" style="text-align: center;" v-text="rankList.majorGroup_rank"></p>
+                            </div>
+                            <div id="canvas_top_classgrade_wrap">
+                            	 <div id="canvas_top_classgrade" style="width: 100px;height: 100px;margin:0 0 10px 0;"></div>
+                                 <p class="top_classgrade" style="text-align: center;">班级</p>
+                                 <p class="top" style="text-align: center;" v-text="rankList.classgrade_rank"></p>
+                            </div>
+					</div>
+					<div class="flex " style="margin-top:40px;padding-top: 40px;padding-bottom:35px;margin-bottom: 35px;border-bottom: 0.01rem solid #F3F5F8;border-top: 0.01rem solid #F3F5F8;">
+						<div class="left line0">
+							<div class="chart" id="chart" style="width:6.5rem;height: 5.4rem;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="flex just-center flex-y-center up">
+					<div class="left">
+						<p v-for="item in zan" v-if="item.rank" style="padding-bottom: 25px">
+							<span class="mui-icon iconfont icon-zan"style="font-size: 25px!important;color: #2196F3;margin-right: 0.3rem"></span>
+							<span v-text="item.name + '评分' + item.type + '第' + item.rank" class="FontSize17color"></span>
+						</p>
+					</div>
+				</div>
+				<div class="vert-mid flex just-center flex-y-center down">
+					<div class="left">
+						<p v-for="item in dengpao" style="padding-bottom: 25px">
+							<span class="mui-icon iconfont icon-bulb"style="font-size: 25px!important;color: #FF4747;margin-right: 0.3rem"></span>
+							<span v-text="item.name + '评分' + item.type + '第' + item.rank" style="color: #b6b6b6!important;"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../lib/vue.js"></script>
+		<script type="text/javascript" src="../../lib/mui.js"></script>
+		<script src="https://g1.jyblc.cn/pic/jyb_1111/vue-lazyload-1.js"></script>
+		<script src="../../js/api/req.js"></script>
+		<script src="../../lib/echarts.min.js"></script>
+		<script type="text/javascript" src="../../js/cavans.js"></script>
+		<script src="../../js/api/person_api.js"></script>
+		<script type="text/javascript" src="../../js/user/user.js"></script>
+		<script type="text/javascript" src="../../js/person_output/student_detail.js"></script>
+	</body>
+</html>

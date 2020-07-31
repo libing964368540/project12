@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=yes"/>
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <title></title>
+    <style>
+        #set_before{
+            padding: 0.96rem 0.33rem;
+        }
+        #set_before .btnWarp{
+            padding-top: 1.3rem;
+            text-align: center;
+        }
+        .inputWrap.active input{
+            border-bottom: 0.02rem solid #ff4747;;
+        }
+    </style>
+    <body>
+         <div id="set_before">
+              <h3 class="title" v-text="title"></h3>
+              <ul>
+                  <li :class="['inputWrap',{'active':Isneed}]">
+                      <input type="text" placeholder="请填写您的需求" v-model="need" name="need" @focus="IsneedActive" @blur="scrollForBug()">
+                  </li>
+                  <li :class="['inputWrap',{'active':Istels}]">
+                      <input type="tel" placeholder="请留下您的联系方式（移动电话）" v-model="tels" name="tels" @focus="IstelsActive" @blur="scrollForBug()">
+                  </li>
+              </ul>
+             <div class="btnWarp">
+                 <span class="setBeforeBtn" @tap="submit">预约</span>
+                 <a class="Phoneline" href="tel://18958078339">联系我们</a>
+             </div>
+
+         </div>
+    </body>
+    <script type="text/javascript" src="../../lib/vue.js"></script>
+    <script type="text/javascript" src="../../lib/mui.js"></script>
+    <script type="text/javascript" src="../../js/api/req.js"></script>
+    <script type="text/javascript" src="../../js/api/order_api.js"></script>
+    <script type="text/javascript" src="../../js/user/user.js"></script>
+    <script type="text/javascript" src="../../js/Skill_service/set_before.js"></script>
+   </html>

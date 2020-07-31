@@ -1,0 +1,127 @@
+body, ul, ol, li, p, div, h1, h2, h3, h4, h5, h6, img, a, input, s, dl, dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none; }
+
+body {
+  background: #ffffff !important; }
+
+.clear:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden; }
+
+.lf {
+  float: left; }
+
+.rg {
+  float: right; }
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 136.5333333333px; } }
+@media screen and (max-width: 770px) {
+  html {
+    font-size: 102.6666666667px; } }
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 102.4px; } }
+@media screen and (max-width: 766px) {
+  html {
+    font-size: 102.1333333333px; } }
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 80px; } }
+@media screen and (max-width: 514px) {
+  html {
+    font-size: 68.5333333333px; } }
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 66.6666666667px; } }
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 64px; } }
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 60px; } }
+@media screen and (max-width: 420px) {
+  html {
+    font-size: 56px; } }
+@media screen and (max-width: 416px) {
+  html {
+    font-size: 55.4666666667px; } }
+@media screen and (max-width: 414px) {
+  html {
+    font-size: 55.2px; } }
+@media screen and (max-width: 412px) {
+  html {
+    font-size: 54.9333333333px; } }
+@media screen and (max-width: 384px) {
+  html {
+    font-size: 51.2px; } }
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 50px; } }
+@media screen and (max-width: 360px) {
+  html {
+    font-size: 48px; } }
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 42.6666666667px; } }
+input::-webkit-input-placeholder {
+  /*Webkit browsers*/
+  color: #979797;
+  font-size: 0.3rem; }
+
+input::-moz-placeholder {
+  /*Mozilla Firefox 4 to 8*/
+  color: #979797;
+  font-size: 0.3rem; }
+
+input:-ms-input-placeholder {
+  /*Internet Explorer 10+*/
+  color: #979797;
+  font-size: 0.3rem; }
+
+h3.title {
+  color: #3f3f3f;
+  margin-bottom: 0.55rem;
+  line-height: 0.65rem;
+  font-size: 30px; }
+
+body input[type='text'], body input[type='tel'] {
+  border: none;
+  border-bottom: 0.02rem solid #f8f8f8;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0; }
+
+.inputWrap {
+  padding-top: 0.45rem;
+  padding-bottom: 0.55rem; }
+
+.setBeforeBtn {
+  display: inline-block;
+  background: #2196F3;
+  height: 0.8rem;
+  width: 100%;
+  line-height: 0.8rem;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 5px; }
+
+.Phoneline {
+  color: #2196F3;
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 0.25rem;
+  display: inline-block; }
+
+/*# sourceMappingURL=public.css.map */

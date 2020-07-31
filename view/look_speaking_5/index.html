@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../lib/mui.css" />
+    <title>参观交流</title>
+</head>
+<style>
+   #lookSpeaking{
+       padding: 0.96rem 0.33rem;
+       position: relative;
+   }
+   #lookSpeaking .setBefore{
+      position: absolute;
+       top: 0.3rem;
+       right: 0.33rem;
+       color: #2196F3;
+       font-size: 14px;
+       font-style: normal;
+       letter-spacing: 1px;
+   }
+   #lookSpeaking .typeTitle{
+       display: inline-block;
+       margin-right: 0.72rem;
+       color: #101010;
+       font-size: 14px;
+   }
+   #lookSpeaking .content dl{
+       padding-top: 0.68rem;
+       padding-bottom: 0.7rem;
+       border-bottom: 0.02rem solid #f8f8f8;
+   }
+   #lookSpeaking .typeTitle.active{
+       font-size: 0.48rem;
+       font-weight: bold;
+   }
+   #lookSpeaking .content dt{
+        width: 100%;
+       height: 4rem;
+       margin-bottom: 0.43rem;
+       box-shadow:2px 7px 20px #dbdbdb;
+       border-radius: 5px;
+       overflow: hidden;
+    }
+   #lookSpeaking .content dt img{
+       width: 100%;
+       height: 100%;
+   }
+   #lookSpeaking .contentTitle{
+       font-size:0.32rem;
+       margin-bottom: 0.15rem;
+       font-size: 18px;
+    }
+   #lookSpeaking .address{
+       font-size:0.28rem;
+       color: #757575;
+       
+    }
+   #lookSpeaking .addressWrap dl{
+        padding: 0.6rem 0;
+        border-bottom: 0.02rem solid #f8f8f8;
+    }
+   #lookSpeaking .addressWrap dt{
+       width: 2.4rem;
+       height: 2.4rem;
+       font-size: 0;
+       overflow: hidden;
+       box-shadow:2px 7px 20px #dbdbdb;
+       border-radius: 5px;
+       overflow: hidden;
+   }
+   #lookSpeaking .addressWrap dt img{
+       width: 100%; 
+        min-height: 100%;
+   }
+   #lookSpeaking .addressWrap dd{
+       width: 4rem;
+   }
+   #lookSpeaking .addressWrap dd p{
+       font-size: 0.4rem;
+       color: #010101;
+       margin-bottom: 0.68rem;
+       font-size: 16px;
+   }
+   #lookSpeaking .addressWrap dd span{
+       font-size: 0.27rem;
+       color: #bdbdbd;
+   }
+</style>
+<body>
+      <div id="lookSpeaking">
+          <i class="setBefore" @tap="jumpSetBefore">预约参观</i>
+          <ul >
+              <li v-for="(item,index) in typeList" v-text="item" :class="{typeTitle:true,active:current==index}" @tap="change(index)"></li>
+          </ul>
+          <div class="content" v-if="current==0">
+              <dl v-for="(item,index) in schoolList"  @tap="jumpDeatils(index)">
+                  <dt><img :src="imgpath+item.img" alt=""></dt>
+                  <dd v-text="item.title" class="contentTitle"></dd>
+                  <dd v-text="getYmd(item.create_time)" class="address"></dd>
+              </dl>
+          </div>
+          <div class="addressWrap" v-if="current==1">
+              <dl v-for="(item,index) in schoolList" class="clear" @tap="jumpDeatils2(index)">
+                  <dt class="lf"><img :src="imgpath+item.img" alt="" ></dt>
+                  <dd class="rg">
+                      <p v-text="item.title" class="contentTitle"></p>
+                      <span v-text="item.des"></span>
+                 </dd>
+
+              </dl>
+          </div>
+
+      </div>
+</body>
+<script type="text/javascript" src="../../lib/vue.js"></script>
+<script type="text/javascript" src="../../lib/mui.js"></script>
+<script type="text/javascript" src="../../js/api/req.js"></script>
+<script type="text/javascript" src="../../js/api/look_Speak_api.js"></script>
+<script type="text/javascript" src="../../js/user/user.js"></script>
+<script type="text/javascript" src="../../js/look_speaking/index.js"></script>
+</html>
